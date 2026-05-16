@@ -1,4 +1,4 @@
-# Ordenar Arrays de PHP
+# PHP cambia de snake_case a camelCame
 
 Una extensión simple y eficiente para Visual Studio Code que te permite cambiar las variables y funciones de tipo snake_case a camelCase.
 
@@ -6,21 +6,18 @@ Una extensión simple y eficiente para Visual Studio Code que te permite cambiar
 
 ## Características
 
-* **Ordenamiento alfabético:** Ordena las claves de arrays asociativos de forma ascendente.
-* **Manejo de arrays anidados:** Funciona correctamente con estructuras de arrays dentro de otros arrays.
-* **Soporte para valores "crudos":** Mantiene intactas las variables, constantes, y llamadas a funciones (`$this->orders`, `true`, `null`).
-* **Preserva la indentación:** El formato y la indentación del array original se mantienen.
-* **Sencillo de usar:** Ordena tu array con un solo comando.
+- **Cambio de estructura:** Cambia los nombres de las variables/funciones de snake_case a camelCase.
+- **Sencillo de usar:** Cambia el código con un solo comando.
 
 ---
 
 ## Uso
 
-1.  **Selecciona el array:** Resalta el array de PHP que deseas ordenar en tu editor. El array debe comenzar y terminar con `[...]`.
+1.  **Selecciona el código:** Resalta el código de PHP que deseas cambiar en tu editor. El código debe ser la palabra completa que contega internamente `_`.
 2.  **Abre la Paleta de Comandos:** Presiona `Ctrl+Shift+P` (o `Cmd+Shift+P` en macOS).
-3.  **Ejecuta el comando:** Escribe `Sort PHP Array` y selecciona el comando que aparece.
+3.  **Ejecuta el comando:** Escribe `PHP snake_case a camelCase` y selecciona el comando que aparece.
 
-El array seleccionado se ordenará automáticamente en su lugar.
+El código seleccionado se cambiará automáticamente.
 
 ---
 
@@ -43,24 +40,24 @@ El array seleccionado se ordenará automáticamente en su lugar.
 ### Después
 
 ```php
-[
-    'data_view' => [
-        'actived' => $this->tb->countActived(['user_id' => $this->user_session->user_id]),
-        'archived' => $this->tb->countArchived(['user_id' => $this->user_session->user_id]),
-        'consolidations' => $this->tb->consolidationsWithOrders($this->user_session->user_id, $record_status),
-        'data' => $this->subtb_1->paymentsWithConsolidation($this->user_session->user_id, $record_status)
-    ],
-    'record_status' => $record_status
+[   'recordStatus' => $recordStatus,
+    'dataView' => [
+        'data' => $this->subtb1->paymentsWithConsolidation($this->userSession->userId, $recordStatus)
+        'archived' => $this->tb->countArchived(['userId' => $this->userSession->userId]),
+        'consolidations' => $this->tb->consolidationsWithOrders($this->userSession->userId, $recordStatus),
+        'actived' => $this->tb->countActived(['userId' => $this->userSession->userId])
+    ]
 ]
 ```
+
 ---
 
 ## Instalación
 
-* Abre Visual Studio Code.
-* Ve a la vista de Extensiones `Ctrl+Shift+X`.
-* Busca `Sort PHP Array`.
-* Haz clic en **Instalar**.
+- Abre Visual Studio Code.
+- Ve a la vista de Extensiones `Ctrl+Shift+X`.
+- Busca `PHP snake_case a camelCase`.
+- Haz clic en **Instalar**.
 
 ---
 
