@@ -4,30 +4,31 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch: # Permite activar la compilación manualmente desde la web
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        # Esto obliga a GitHub a ejecutar todos los comandos dentro de tu carpeta de la extensión
-        working-directory: vscodeSnakeToCamelCase
-
     steps:
     - name: Clonar el repositorio
       uses: actions/checkout@v4
 
-    - name: Configurar Node.js
+    - name: Configurar Node.js 24
       uses: actions/setup-node@v4
       with:
-        node-version: 18
-        cache: 'npm'
-        cache-dependency-path: vscodeSnakeToCamelCase/package-lock.json
+        node-version: 24
 
     - name: Instalar dependencias
-      run: npm install
+      run: |
+        if [ -f package-lock.json ]; then
+          npm ci
+        else
+          npm install
+        fi
 
     - name: Compilar código
       run: npm run vscode:prepublish --if-present
@@ -39,4 +40,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: extension-vsix
-        path: vscodeSnakeToCamelCase/*.vsix
+        path: "*.vsix" # Ahora busca el archivo directamente en la raíz
