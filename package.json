@@ -1,0 +1,64 @@
+{
+    "name": "php-snake-to-camel",
+    "displayName": "PHP Snake_case a camelCase",
+    "description": "Convierte variables y funciones PHP de snake_case a camelCase, respetando excepciones y claves de array.",
+    "publisher": "dmonium",
+    "version": "1.0.0",
+    "icon": "icon.png",
+    "engines": {
+        "vscode": "^1.83.0"
+    },
+    "keywords": [
+        "php",
+        "array",
+        "refactor",
+        "camel",
+        "case"
+    ],
+    "categories": [
+        "Programming Languages",
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:php-snake-to-camel.refactorSelection"
+    ],
+    "main": "./extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "php-snake-to-camel.refactorSelection",
+                "title": "PHP Snake_case a camelCase",
+                "category": "Cambiar nombres variables y funciones"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "php-snake-to-camel.refactorSelection",
+                "key": "ctrl+shift+f11",
+                "when": "editorTextFocus"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "command": "php-snake-to-camel.refactorSelection",
+                    "when": "editorHasSelection"
+                }
+            ]
+        }
+    },
+    "author": {
+        "name": "Lord Dark Dmonium",
+        "email": "dmonium@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dmonium/php-snake-to-camel.git"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.83.0"
+    }
+}
